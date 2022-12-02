@@ -1,0 +1,86 @@
+--==============================================================================================
+--======================================== Examen PFONC ========================================
+--======================================== Romain LUCAS ========================================
+--==============================================================================================
+
+
+--====================================================
+--===================== Partie 1 =====================
+--====================================================
+
+-- === Question 1 ===
+data Couleur = Blanc | Noir
+data Case = Vide | Pion Couleur | Tour -- on n'a pas besoin d'indiquer la couleur de la tour car il y en a une seule et elle est blanche
+data Echiquier = Echiquier [[Case]]
+
+-- === Question 2 ===
+indicPN::Case->Int
+indicPN (Pion Noir) = 1
+indicPN _ = 0
+
+-- === Question 3 ===
+comptePN::Echiquier->Int
+comptePN (Echiquier matrice) = sum $ map (\ligne -> sum $ map indicPN ligne) matrice
+
+-- === Question 4 ===
+transfer::[a]->[[a]]->[[a]] 
+transfer (x:xs) (ys:yss) = (ys ++ [x]):(transfer xs yss)
+
+transpose::[[a]]->[[a]]
+transpose matrice = foldr $ zipWith transfer $ replicate (length $ head matrice) [] $ matrice
+
+-- === Question 5 ===
+prise::[Case]->[Case]
+prise line = do
+	line_indexee <- zip [0..((length line) - 1)] line
+	tourexists <- filter (==Tour).snd line
+	if ((==0).length tourexists) then line else indexTour <- fst $ head tourexists
+	droiteTour <- drop (indexTour + 1) tourexists
+	pionadroite <- filter (==(Pion _)).snd droiteTour
+	if ((==0).length pionadroite) then line else pion <- head pionadroite
+	if (snd pion) == (Pion Blanc) then line else indexPion <- fst pion
+	(take indexTour line) ++ [Vide] ++ (drop (indexTour + 1) $ take indexPion line) ++ [Tour] ++ (drop (indexPion + 1) line)
+
+-- === Question 6 ===
+prises'::Echiquier->[Echiquier]
+prises' (Echiquier matrice) = map (\mat -> Echiquier $ map prise mat) $ map (\f -> f matrice) [id, (\mat -> map reverse mat), transpose, (\mat -> map reverse mat).transpose]
+
+prises::Echiquier->[Echiquier]
+prises echiqu = filter (/= echiqu) $ prises' echiqu
+
+-- === Question 7 ===
+voyage'::[Echiquier]->Bool
+voyage' echiquiers = if (any (==0).comptePN echiquiers) then True else voyage' $ concatMap prises echiquiers
+
+voyage::Echiquier->Bool
+voyage echiquier = voyage' [echiquier]
+
+
+--====================================================
+--===================== Partie 2 =====================
+--====================================================
+
+-- === Question 8 ===
+dyck'::String->Int->Bool
+dyck' "" n = (==0) n -- n représente le nombre de parenthèses ouvertes en attente d'être fermées
+dyck' ('(':suite) n = dyck' suite (n + 1)
+dyck' (')':suite) n = if n == 0 then False else dyck' suite (n - 1)
+
+dyck::String->Bool
+dyck mot = dyck' mot 0
+
+
+--====================================================
+--===================== Partie 3 =====================
+--====================================================
+
+-- === Question 9 ===
+adjacents::[a]->[(a,a)]
+adjacents [] = []
+adjacents (x:xs) = zip (x:xs) xs
+
+
+-- === Question 10 ===
+triee::Ord a => [a]->Bool
+triee liste = and [(\(x,y) -> x <= y) couple | couple <- (adjacents liste)]
+

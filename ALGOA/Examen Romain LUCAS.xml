@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <object alt="" name="Image1" object_type="graphic"/>
+ <object alt="" name="Image2" object_type="graphic"/>
+ <paragraph index="15" node_type="writer">Algorithmique Avancée</paragraph>
+ <paragraph index="16" node_type="writer">Preuve et complexité</paragraph>
+ <paragraph index="17" node_type="writer">1.</paragraph>
+ <paragraph index="18" node_type="writer">Boucle while : Après la kième itération les k dernières cases du tableau sont triées et supérieures aux autres cases (elles sont donc disposées dans leur position finale).</paragraph>
+ <paragraph index="19" node_type="writer">Boucle for : Après la ième itération, l’élément d’indice i est supérieur à tous ceux qui le précèdent.</paragraph>
+ <paragraph index="20" node_type="writer">2.</paragraph>
+ <paragraph index="21" node_type="writer">On peut prouver inductivement l’invariant de boucle for :</paragraph>
+ <paragraph index="22" node_type="writer">A la ième itération, l’élément d’indice (i-1) est supérieur à tous ceux qui le précèdent. Si il est plus grand que le suivant on l’échange sinon il reste. </paragraph>
+ <paragraph index="23" node_type="writer">S’il y a échange alors le nouvel élément d’indice i est supérieur au nouvel élément d’indice i-1 et par récurrence est supérieur à tous ceux qui précèdent</paragraph>
+ <paragraph index="24" node_type="writer">S’il n’y a pas échange alors l’élément d’indice i est supérieur à l’élément d’indice i-1 qui par construction est supérieur à tous les éléments précédents.</paragraph>
+ <paragraph index="25" node_type="writer">L’invariant de boucle for est donc vrai.</paragraph>
+ <paragraph index="26" node_type="writer">Comme on itère sur tous les éléments pas encore triés du tableau, on itère sur le plus grand restant et on le place à la fin (invariant de boucle for) donc après la kième itération on a trié à la fin les k éléments les plus grands du tableau.</paragraph>
+ <paragraph index="27" node_type="writer">La boucle while itère sur tous les k une et une seule fois (k+=1 à la fin de la boucle). Donc le tableau finit par être triés après au maximum n itérations. </paragraph>
+ <paragraph index="28" node_type="writer">On a la correction et la terminaison.</paragraph>
+ <paragraph index="29" node_type="writer">3. ON fait des échanges pairs à pairs. Ainsi pour tout couple (i,j) tel que 0&lt;=i&lt;j&lt;n, si A[i]&gt;A[j], il y aura échange. Aussi on cherche la probabilité de l’évènement (0&lt;=i&lt;j&lt;n, si A[i]&gt;A[j]).</paragraph>
+ <paragraph index="30" node_type="writer">On peut placer à l’indice i un nombre k compris entre 1 et n et à l’indice j un nombre k’ compris entre 1 et n k exclus, La probabilité que A[i]&gt;A[j] est de k/n. Pour chaque couple (i,j) tel que 0&lt;=i&lt;j&lt;n on a alors une probabilité de p= \sum_{k=1}^{n} \fract{k}{n²} = \fract{k}{n}</paragraph>
+ <paragraph index="31" node_type="writer"> Et donc l’espérance du nombre d’échange en moyenne est E = \sum_{i=[1..n]} \sum_{j=1..n} \fract {k} {n} = \fract{n+1}{2} * \fract{k}{n}</paragraph>
+ <paragraph index="32" node_type="writer">4. Moins il y a de « sections ordonnées » dans le tableau, plus il y aura d’appel à la boucle while. Ainsi le pire cas est la permutation [n..1]</paragraph>
+ <paragraph index="33" node_type="writer">Conception d’algorithmes</paragraph>
+ <paragraph index="34" node_type="writer">5.</paragraph>
+ <paragraph index="35" node_type="writer">explication : un algorithme en divide and conquer divise le tableau en plusieurs sous tableaux où le cas est plus simple à prédire. On pourrra ainsi revenir au cas simple de 1 tableau puis on porra remonter au tableaux de 2 et 3 cases, à partir de ces tableaux on pourra construire les tableaux de 4 5 et 6 cases etc. Jusqu’à pouvoir recontruire le tableau de départ. Le sous tableau ayant la plus grande somme sera alors le résultat</paragraph>
+ <paragraph index="36" node_type="writer">6.</paragraph>
+ <paragraph index="37" node_type="writer">7.</paragraph>
+ <paragraph index="38" node_type="writer">explication :</paragraph>
+ <paragraph index="39" node_type="writer">On notera sur l’exemple ci-dessus que le programme vise à tranférer les disques de la tige 0 vers la tige 2.</paragraph>
+ <paragraph index="40" node_type="writer">On commence par la possibilité la plus simple, celle où il n’y a qu’un seul disque. La solution est immédiate, il suffit de placer le disque unique sur la tige 2.</paragraph>
+ <paragraph index="41" node_type="writer">Pour la suite on suppose avoir résolu le problème pour i disques.</paragraph>
+ <paragraph index="42" node_type="writer">Pour i+1 disques on commence par déplacer les i disques sur la tige cible grâce à la méthode déjà connue grâce à notre mémoïsation.</paragraph>
+ <paragraph index="43" node_type="writer">Puis on déplace le plus gros disque désormais libéré vers la tige intermédiaire.</paragraph>
+ <paragraph index="44" node_type="writer">Si on sait faire le déplacement dans un sens on sait le faire dans l’autre donc on peut ramener la pile de i disques sur la tige 2 à la tige 0.</paragraph>
+ <paragraph index="45" node_type="writer">On peut alors passer le plus gros disque sur la tige. On se retrouve dans la situation pour i disques que l’on sait résoudre.</paragraph>
+ <paragraph index="46" node_type="writer">On note que l’on pourrait simplifier les instructions si on pouvait choisir sur quel tige on réalise le transfert. On pourrait alors faire le transfert de i disques du départ vers l’intermédiaire puis le i+1e disque du départ vers le final et finalement le transfert des i disques de l’intermédiaire vers le final.</paragraph>
+ <paragraph index="47" node_type="writer">8.</paragraph>
+ <paragraph index="48" node_type="writer">Grâce à la méthode de programmation dynamique ascendante on ne réalise qu’une seule fois chaque calcul. On passe donc seulement une fois dans la boucle : complexité temporelle en O(n). Par contre ces performances temporelles ont un coup : une complexité en mémoire en O(n).</paragraph>
+ <paragraph index="56" node_type="writer">Structure de données</paragraph>
+ <paragraph index="57" node_type="writer">9.</paragraph>
+ <paragraph index="59" node_type="writer">On commence par faire un ABR à partir de A1, x et A2. </paragraph>
+ <paragraph index="60" node_type="writer">Une fois l’ABR créé, on veut en faire un AVL, donc dont la hauteur du fils gauche diffère de maximum 1 de la hauteur du fils droit.</paragraph>
+ <paragraph index="61" node_type="writer">Pour parvenir à cela on réalise des rotations jusqu ‘à ce que ce soit le cas.</paragraph>
+ <paragraph index="62" node_type="writer">Ce faisant on risque d’avoir déséquilibré les arbres fils, aussi on refait sur le fils.</paragraph>
+</indexing>

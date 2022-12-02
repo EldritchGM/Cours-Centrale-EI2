@@ -1,0 +1,85 @@
+1) Gain Alice\Gain Bob
+
+			Alice
+		Pile		Face
+	Pile	+1\-1		-1\+1
+Bob	
+	Face	-1\+1		+1\-1
+
+	
+
+2) Alice doit jouer face
+
+3) Si Alice pense que Bob va jouer face alors elle va jouer face
+   Si Bob pense que Alice pense que Bob va jouer face alors il pense qu'Alice va jouer face donc il va jouer pile
+   Si Alice pense que Bob pense qu'elle pense qu'il va jouer face alors Alice pense qu'il va jouer pile et elle va donc jouer pile.
+  
+4) Alice joue face avec une probabilité p, Bob avec une probabilité q
+Espérance du Gain d'Alice: pq + (1-p)(1-q) - p(1-q) - (1-p)q
+Pour que cela ne change pas, il faut que la dérivée de cette espérance selon q soit nulle:
+p - (1-p) + p - (1 - p) = 4p - 2
+On veut donc 4p = 2 et donc p = 0.5.
+La stratégie de tirer à pile ou face n'est pas influencée par celle du joueur en face.
+
+======================================================================================================================================
+1) Temps Bonie/Temps Clyde
+			
+			Bonnie
+		Trahir		Soutenir
+	Trahir	12/12		10/5
+Clyde	
+	Souten.	5/10		3/3
+
+Si Clyde Trahit toujours: il se prend en moyenne 11 ans
+Si Clyde Soutient toujours: il se prend en moyenne 4 ans
+Dans cette situation Clyde soutient
+
+======================================================================================================================================
+======================================================================================================================================
+1) Dans le premier cas trahir/trahir est un équilibre de Nash
+2) Dans le 2e cas soutenir/soutenir est un équilibre de Nash
+3) Dans le 3e cas soutenir/soutenir et trahir/trahir sont deux équilibres de Nash
+
+======================================================================================================================================
+1) Pour être un équilibre de Nash, les stratégies pures doivenet avoir la même valeur que les stratégies mixtes. Ainsi les stratégies ne dépendent pas du choix
+On fixe donc déjà la stratégie de Bob, on veut que Alice gagne toujours la même chose quelle que soit son choix.
+   q - (1-q) = - q + (1-q) -> q = 0,5
+On fait la symétrie
+   q = (1-q)
+   Soit p = q = 1/2
+Si les deux jouent à pile ou face, on a un équilibre de Nash.
+
+======================================================================================================================================
+Dilemme du pollueur
+1) 2 + (n - k)
+2) 1 + (n - k)
+3) Tous les pays ont intérêt subjectivement à ne pas voter en priant pour que tous les autres votent
+4) On obtient u équilibre de Nash
+5) On aura un prix de n (et tout le monde va crever). Si tout le monde le vote, le coût pour tout le monde sera de 2. 
+
+======================================================================================================================================
+Tragédie des biens communs
+1) Pour x chèvres, la production de lait totale est f(x)=xexp(1-x/10)
+   f'(x) = exp(1-x/10) - xexp(1-x/10)/10 = (1-x/10)exp(1-x/10)
+   f'(x) == 0 <=> x = 10. La production maximale est de 10 seaux de lait.
+2) Dix seaux de lait pour dix familles. Chaque famille recevra un sceau de lait. Tout va bien dans le meilleur des mondes
+3) La famille i recevra g(x)=xexp(1 - (x + G)/10)
+   g'(x) = exp(1-(x + G)/10) - xexp(1-(x + G)/10)/10 = (1 - x/10)exp(1-(x + G)/10)/10
+   g'(x) == 0 <=> x = 0. La famille i va mettre 0 chèvres
+4) Chaque famille va mettre 0 chèvres. Il y aura 100 chèvres, chaque famille produit environ 1/100e de seau de lait
+5) Dans ce cas la famille i recevra h(x) = (x + G) exp(1 - (x+G)/10) 
+Les familles auront tout intérêt à s'accorder pour qu'il y ait 10 chèvres. On reviendra à la situation initiale
+
+====================================================================================================================================
+1) Bimatrice
+Bobistan POV\Alicie POV
+					Alicie
+				Nuke		No Nuke
+		Nuke	2\2		  	1\3
+Bobistan	
+		No Nuke	3\1			4\4
+
+====================================================================================================================================
+1) 
+2) On ne peut pas atteindre l'équilibre en bas à droite, seulement celui du bas
+3) On ne eput pas atteindre l'équilibre en haut à droite, alors que c'est le meilleur

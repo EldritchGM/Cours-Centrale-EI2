@@ -1,4 +1,5 @@
 package priseenmain;
+import java.util.Scanner;
 
 /**
  *
@@ -7,7 +8,7 @@ package priseenmain;
 // Rappel fichier .java doit toujours avoir le meme nom que la classe Java qu'il contient
 // Rappel 2 : 1 fichier .java = 1 classe normalement
 
-public class PriseEnMain {
+class PriseEnMain {
 
     /**
      * @param args the command line arguments
@@ -27,14 +28,14 @@ public class PriseEnMain {
 
         if (month / 2 == 0) {
             System.out.println("Le mois est Pair");
-         else {
+        } else {
             System.out.println("Le mois est Impair");
         }
 
         // choix selon affichant le nom du mois en fonction de son numéro
         switch (month) {
             case 1:
-                System.out.println("Janvier")
+                System.out.println("Janvier");
                 break;
             case 2:
                 System.out.println("Fevrier");
@@ -52,10 +53,11 @@ public class PriseEnMain {
                 System.out.println("Juin");
                 break;
             case 7:
-                System.out.println("Juillet";
+                System.out.println("Juillet");
                 break;
             case 8:
                 System.out.println("Aout");
+                break;
             case 9:
                 System.out.println("Septembre");
                 break;
@@ -66,7 +68,7 @@ public class PriseEnMain {
                 System.out.println("Novembre");
                 break;
             case 12:
-                System.out.println(Decembre");
+                System.out.println("Decembre");
                 break;
             default:
                 System.out.println("Mois invalide !");
@@ -76,10 +78,10 @@ public class PriseEnMain {
         // boucle "tant que" qui calcule le temps restant jusqu'au nouvel an
         int j=0;
         int i = month;
+        System.out.println("Calcul nombre mois jusqu'au nouvel an...");
         while (i != 12) {
             i += 1;
             j++;
-            System.out.println("Calcul nombre mois jusqu'au nouvel an...");
         }
 
         System.out.println("Nombre de mois jusqu'au nouvel an : " + j);
@@ -88,7 +90,7 @@ public class PriseEnMain {
         // Utilisation d'un tableau
         int tab[] = new int[10];
         System.out.println("S'il vous plait entrez 10 nombres les uns apres les autres");
-        for(int k=0; k<=10 k++) {
+        for(int k=0; k < 10; k++) {
             System.out.println("nombre ?");
             // on reutilise le scanner pour lire au clavier des entiers
             tab[k] = sc.nextInt();

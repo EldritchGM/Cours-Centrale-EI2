@@ -48,4 +48,11 @@ public class Point2D {
         double distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
         return distance;
     } 
+
+    public static double distance(Point2D p1, Point2D p2) {
+        double deltaX = p1.x - p2.x;
+        double deltaY = p1.y - p2.y;
+        double distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+        return distance;
+    }
 }

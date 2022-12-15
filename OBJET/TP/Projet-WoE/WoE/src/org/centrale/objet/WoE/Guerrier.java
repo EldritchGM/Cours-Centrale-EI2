@@ -1,16 +1,16 @@
 package org.centrale.objet.WoE;
-import java.util.Random;;
+import java.util.Random;
 
-public class Archer extends Personnage{
+public class Guerrier extends Personnage{
 
-    Archer() {
+    Guerrier() {
         super();
     }
-    Archer(String nom, int pV, int dA, int pPar, int paAtt, int paPar, Point2D p, int distAttMax, int nbProjectiles) {
+    Guerrier(String nom, int pV, int dA, int pPar, int paAtt, int paPar, Point2D p, int distAttMax, int nbProjectiles) {
         super(nom, pV, dA, pPar, paAtt, paPar, p, distAttMax, nbProjectiles);
     }
-    Archer(Archer a) {
-        super(a);
+    Guerrier(Guerrier g) {
+        super(g);
     }
     
     public void Combattre(Creature c) {
@@ -65,4 +65,5 @@ public class Archer extends Personnage{
             }
         }
     }
+
 }

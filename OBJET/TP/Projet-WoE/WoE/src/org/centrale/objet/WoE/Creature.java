@@ -1,11 +1,12 @@
 package org.centrale.objet.WoE;
+import java.util.Random;
 
-public class Entite {
-    private int ptVie, degAtt, ptPar, pageAtt, pagePar;
-    private Point2D pos;
+public class Creature {
+    protected int ptVie, degAtt, ptPar, pageAtt, pagePar;
+    protected Point2D pos;
 
-    Entite() {}
-    Entite(int pV, int dA, int pPar, int paAtt, int paPar, Point2D p) {
+    Creature() {}
+    Creature(int pV, int dA, int pPar, int paAtt, int paPar, Point2D p) {
         ptVie = pV;
         degAtt = dA;
         ptPar = pPar;
@@ -13,13 +14,13 @@ public class Entite {
         pagePar = paPar;
         pos = p;
     }
-    Entite(Entite e) {
-        ptVie = e.ptVie;
-        degAtt = e.degAtt;
-        ptPar = e.ptPar;
-        pageAtt = e.pageAtt;
-        pagePar = e.pagePar;
-        pos = e.pos;
+    Creature(Creature e) {
+        this.ptVie = e.ptVie;
+        this.degAtt = e.degAtt;
+        this.ptPar = e.ptPar;
+        this.pageAtt = e.pageAtt;
+        this.pagePar = e.pagePar;
+        this.pos = new Point2D(e.pos.getX(), e.pos.getY());
     }
 
     public int getPtVie() {
@@ -70,8 +71,19 @@ public class Entite {
         this.pos = pos;
     }
 
-    public void deplace() {}
+    public void deplace() {
+        Random rng_generator = new Random();
+        int dx, dy;
+        do {
+            dx = rng_generator.nextInt(2) - 1;
+            dy = rng_generator.nextInt(2) - 1;
+        } while (dx == 0 && dy == 0); 
+        
+        this.pos.translate(dx, dy);
+    }
 
-    public void affiche() {}
+    public void affiche() {
+        System.out.println("Position: (" + this.pos.getX() + ", " + this.pos.getY() + ")");
+    }
 
 }
